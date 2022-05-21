@@ -6,13 +6,27 @@ import {
   Route
 } from 'react-router-dom';
 import ProductForm from './components/ProductForm';
+import ProductViewAll from './components/ProductViewAll';
+import ProductViewOne from './components/ProductViewOne';
 
 function App() {
   return (
-    <div className="App container">
-      <h1>Product Manager</h1>
-      <ProductForm></ProductForm>
-    </div>
+    <BrowserRouter>
+      <div className="App container">
+        <h1>Product Manager</h1>
+        <hr />
+        <Switch>
+          <Route exact path='/'>
+            <ProductForm></ProductForm>
+            <hr />
+            <ProductViewAll></ProductViewAll>
+          </Route>
+          <Route exact path='/api/product/:_id'>
+            <ProductViewOne></ProductViewOne>
+          </Route>
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
