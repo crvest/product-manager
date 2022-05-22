@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const ProductForm = () => {
+const ProductForm = (props) => {
 
     // state variables
     let [ title, setTitle ] = useState('');
@@ -24,11 +24,13 @@ const ProductForm = () => {
                 if(res.data.error){
                     setErrors(res.data.error.errors)
                 }
-                // clear form if no validation errors
+                // clear form if no validation errors. succesful product creation
                 else {
                     setTitle('');
                     setPrice('');
                     setDescription('');
+                    // toggle createToggle
+                    props.setCreateToggle(!props.createToggle);
                 }
             })
             .catch(err => console.log('error: ', err))

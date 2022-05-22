@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom'
 import { useParams } from 'react-router';
 
-const ProductViewAll = () => {
+const ProductViewAll = (props) => {
 
     // declare state variable to store axios call in
     const [ allProducts, setAllProducts ] = useState([]);
@@ -23,7 +23,7 @@ const ProductViewAll = () => {
             .catch(err => {
                 console.log('error: ',err)
             })
-    },[deleteToggle])
+    },[deleteToggle, props.createToggle])
 
     // delete product
     const deleteProduct = (_id) => {
